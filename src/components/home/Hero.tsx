@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Calendar, User, Hotel } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const slides = [
   {
@@ -50,7 +51,7 @@ export default function Hero() {
                 <p className="text-sm">4.8 (2,847 reviews)</p>
               </div>
               <button className="mt-6 px-6 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded">
-                Book now
+             <Link to="/booknow">Book Now</Link>
               </button>
             </div>
           </div>
@@ -91,7 +92,7 @@ export default function Hero() {
 
         {/* Button */}
         <button className="bg-gray-600 hover:bg-gray-700 text-white px-5 py-2 rounded">
-          Book now
+       <Link to="/booknow">Book Now</Link>  
         </button>
       </div>
     </div>

@@ -7,25 +7,44 @@ import Home from './pages/home/Home';
 import Login from './pages/auth/Login';
 import Nav from './components/home/Nav';
 import Footer from './components/home/Footer';
-import ForgotPassword from './pages/auth/ForgotPassword';
-import ResetPassword from './pages/auth/ResetPassword';
-import PasswordUpdated from './pages/auth/PasswordUpdated';
+
+
 import OtpVerification from './pages/auth/OtpVerification';
 import AllOffers from './pages/AllOffers';
+import SignIn from './pages/auth/SignIn';
+import About from './pages/footerPage/About';
+import ContactSection from './pages/footerPage/Contact';
+import { Toaster } from 'react-hot-toast';
+import Blogs from './pages/footerPage/Blogs';
+import ReservationForm from './pages/booknow/Book';
+import DiningReservation from './pages/booknow/Dininig';
+import EventsReservation from './pages/booknow/EventsReservation';
+import GalleryPage from './pages/footerPage/Gallery';
 function App() {
 
   return (
     
       <Router>
+      <Toaster position="top-right" reverseOrder={false} />
          <Nav/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/password-updated" element={<PasswordUpdated />} />
+      
         <Route path="/otp-verification" element={<OtpVerification />} />
         <Route path="/all-offers" element={<AllOffers/>} />
+        <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact-us" element={<ContactSection />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/booknow" element={<ReservationForm />} />
+        <Route path="/dining" element={<DiningReservation />} />
+        <Route path="/events" element={<EventsReservation />} />
+        <Route path="/gallery" element={<GalleryPage />} />
+
+
+
+
 
 
 

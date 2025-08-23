@@ -6,6 +6,7 @@ import {
     FaXTwitter,
 } from "react-icons/fa6";
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
     return (
@@ -51,11 +52,11 @@ export default function Footer() {
                         Explore
                     </h4>
                     <ul className="text-sm text-gray-600 space-y-1 mt-2">
-                        <li>Home</li>
-                        <li>Rooms</li>
-                        <li>Dining</li>
-                        <li>Events</li>
-                        <li>Contact</li>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/booknow">Rooms</Link></li>
+                        <li><Link to="/dining">Dining</Link></li>
+                        <li><Link to="/events">Events</Link></li>
+                        <li><Link to="/contact-us">Contact Us</Link></li>
                     </ul>
                 </div>
 
@@ -65,9 +66,10 @@ export default function Footer() {
                         Corporate
                     </h4>
                     <ul className="text-sm text-gray-600 space-y-1 mt-2">
-                        <li>Blogs</li>
-                        <li>Gallery</li>
-                        <li>About</li>
+
+                        <li><Link to="/blogs">Blogs</Link></li>
+                        <li><Link to="/gallery">Gallery</Link></li>
+                        <li><Link to="/about">About</Link></li>
                     </ul>
                 </div>
 

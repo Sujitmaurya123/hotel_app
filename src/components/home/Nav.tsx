@@ -1,9 +1,35 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
+type User = {
+    name: string;
+    email: string;
+    // add other properties if needed
+};
 export default function Nav() {
+    const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
+    const [user, setUser] = useState<User | null>(null);
+
+    useEffect(() => {
+        // Check if user data exists in localStorage
+        const userData = localStorage.getItem("user");
+        if (userData) {
+            setUser(JSON.parse(userData));
+        }
+    }, []);
+
+    const handleLogout = () => {
+        // Remove user data from localStorage
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        toast.success("Logout Successfully...")
+        setUser(null);
+        // You might want to redirect to home page after logout
+        navigate("/");
+    };
 
     return (
         <nav className="w-full shadow-sm bg-white fixed top-0 left-0 z-50">
@@ -12,13 +38,12 @@ export default function Nav() {
                     {/* Left Section - Logo */}
                     <div className="flex items-center space-x-2">
                         <Link to="/">
-                        <img
-                            src="/logo.svg"
-                            alt="Hotel Laxmi Vilas Palace"
-                            className="h-13 w-30"
+                            <img
+                                src="/logo.svg"
+                                alt="Hotel Laxmi Vilas Palace"
+                                className="h-13 w-30"
                             />
-                            </Link>
-                        
+                        </Link>
                     </div>
 
                     {/* Desktop Menu */}
@@ -26,20 +51,35 @@ export default function Nav() {
                         <Link to="/" className="hover:text-orange-600 text-sm">
                             HOME
                         </Link>
-                        <Link to="#" className="hover:text-orange-600 text-sm">
+                        <Link to="/booknow" className="hover:text-orange-600 text-sm">
                             ROOMS
                         </Link>
-                        <Link to="#" className="hover:text-orange-600 text-sm">
+                        <Link to="events" className="hover:text-orange-600 text-sm">
                             EVENT
                         </Link>
-                        <Link to="#" className="hover:text-orange-600 text-sm">
+                        <Link to="/dining" className="hover:text-orange-600 text-sm">
                             DINING
                         </Link>
-                        <Link to="/login" className="hover:text-orange-600 text-sm">
-                            LOGIN
-                        </Link>
+                       
+                        {user ? (
+                            <div className="flex items-center space-x-4">
+                                <span className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-200 text-sm">
+                                    {user.name.split(' ')[0]}
+                                </span>
+                                <button
+                                    onClick={handleLogout}
+                                    className="hover:text-orange-600 text-sm cursor-pointer"
+                                >
+                                    LOGOUT
+                                </button>
+                            </div>
+                        ) : (
+                            <Link to="/login" className="hover:text-orange-600 text-sm">
+                                LOGIN
+                            </Link>
+                        )}
                         <button className="bg-gray-500 text-white px-4 py-1 rounded">
-                            Book now
+                         <Link to="/booknow">Book Now</Link>
                         </button>
                     </div>
 
@@ -59,21 +99,33 @@ export default function Nav() {
             {isOpen && (
                 <div className="md:hidden bg-white shadow-lg">
                     <div className="flex flex-col space-y-3 px-6 py-4">
-                        <a href="#" className="hover:text-orange-600 text-sm">
+                        <Link to="/" className="hover:text-orange-600 text-sm">
                             HOME
-                        </a>
-                        <a href="#" className="hover:text-orange-600 text-sm">
+                        </Link>
+                        <Link to="/booknow" className="hover:text-orange-600 text-sm">
                             ROOMS
-                        </a>
-                        <a href="#" className="hover:text-orange-600 text-sm">
+                        </Link>
+                        <Link to="/events" className="hover:text-orange-600 text-sm">
                             EVENT
-                        </a>
-                        <a href="#" className="hover:text-orange-600 text-sm">
+                        </Link>
+                        <Link to="/dining" className="hover:text-orange-600 text-sm">
                             DINING
-                        </a>
-                        <a href="#" className="hover:text-orange-600 text-sm">
-                            LOGIN
-                        </a>
+                        </Link>
+                        {user ? (
+                            <>
+                                <span className="text-sm">Hello, {user.name}</span>
+                                <button
+                                    onClick={handleLogout}
+                                    className="hover:text-orange-600 text-sm text-left"
+                                >
+                                    LOGOUT
+                                </button>
+                            </>
+                        ) : (
+                            <Link to="/login" className="hover:text-orange-600 text-sm">
+                                LOGIN
+                            </Link>
+                        )}
                         <button className="bg-gray-500 text-white px-4 py-2 rounded">
                             Book now
                         </button>
