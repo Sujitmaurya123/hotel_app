@@ -18,7 +18,7 @@ export default function Footer() {
                         <img
                             src="/logo.svg" // Replace with your logo path
                             alt="Hotel Logo"
-                            className="w-74 h-19"
+                            className="w-40 h-19"
                         />
                         
                     </div>

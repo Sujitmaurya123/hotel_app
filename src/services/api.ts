@@ -1,20 +1,58 @@
-import axios from "axios";
+import axios from 'axios';
 
+const url= import.meta.env.VITE_API_URL;
 const API = axios.create({
-  baseURL: "http://localhost:5000/api/auth", // your backend URL
+baseURL:`${url}/api`, // root API (auth -> /auth/*, posts -> /posts)
+withCredentials: false, // set true if you use cookies
 });
 
-// Add token automatically for protected routes
+
+// Add token on every request
 API.interceptors.request.use((config) => {
-  const token = localStorage.getItem("token");
-  if (token) config.headers.Authorization = `Bearer ${token}`;
-  return config;
+const token = localStorage.getItem('token');
+if (token) {
+config.headers = config.headers ?? {};
+config.headers.Authorization = `Bearer ${token}`;
+}
+return config;
 });
 
-export const signup = (name: string, phone: string) => API.post("/signup", { name, phone });
-export const login = (phone: string) => API.post("/login", { phone });
-export const sendOtp = (phone: string) => API.post("/send-otp", { phone });
-export const verifyOtp = (phone: string, otp: string) => API.post("/verify-otp", { phone, otp });
 
-export const getProfile = () => API.get("/profile");
-export const updateProfile = (name: string) => API.put("/profile", { name });
+// Optional: central error/log handling
+API.interceptors.response.use(
+(res) => res,
+(error) => {
+// Example: auto-logout on 401
+if (error?.response?.status === 401) {
+// localStorage.removeItem('token');
+// window.location.href = '/login';
+}
+return Promise.reject(error);
+}
+);
+
+
+export default API;
+
+
+
+// import axios from "axios";
+
+// const API = axios.create({
+//   baseURL: "http://localhost:5000/api/auth", // your backend URL
+// });
+
+// // Add token automatically for protected routes
+// API.interceptors.request.use((config) => {
+//   const token = localStorage.getItem("token");
+//   if (token) config.headers.Authorization = `Bearer ${token}`;
+//   return config;
+// });
+
+// export const signup = (name: string, phone: string) => API.post("/signup", { name, phone });
+// export const login = (phone: string) => API.post("/login", { phone });
+// export const sendOtp = (phone: string) => API.post("/send-otp", { phone });
+// export const verifyOtp = (phone: string, otp: string) => API.post("/verify-otp", { phone, otp });
+
+// export const getProfile = () => API.get("/profile");
+// export const updateProfile = (name: string) => API.put("/profile", { name });

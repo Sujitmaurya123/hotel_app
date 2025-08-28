@@ -1,12 +1,17 @@
-import { getProfile, verifyOtp } from "../../services/api";
+import { useLazyGetProfileQuery } from "../../Redux/api/bookingapi";
+import { useVerifyOtpMutation } from "../../Redux/api/authApi";
+
 import { useLocation, useNavigate } from "react-router-dom";
 import React, { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { setCredentials } from "../../Redux/slices/authSlice";
 
 export default function OtpVerification() {
     const location = useLocation();
     const navigate = useNavigate();
     const phone = (location.state as any)?.phone || "";
+
     useEffect(() => {
         console.log("Location state:", location.state);
         console.log("Phone extracted:", phone);
@@ -15,6 +20,12 @@ export default function OtpVerification() {
     const [otpDigits, setOtpDigits] = useState(["", "", "", "", "", ""]);
     const [loading, setLoading] = useState(false);
     const inputs = useRef<Array<HTMLInputElement | null>>([]);
+    const dispatch = useDispatch();
+    
+    const [verifyOtp] = useVerifyOtpMutation();
+
+    
+    const [getProfile] = useLazyGetProfileQuery();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
         const value = e.target.value;
@@ -33,17 +44,30 @@ export default function OtpVerification() {
         if (otp.length !== otpDigits.length) {
             return alert("Please enter complete OTP");
         }
+
         setLoading(true);
         try {
-            const res = await verifyOtp(phone, otp);
-            localStorage.setItem("token", res.data.token);
+            
+            const res = await verifyOtp({ phone, otp }).unwrap();
 
+            if (res?.token) {
+                localStorage.setItem("token", res.token);
+            }
+
+            
+                // ✅ Save user & token in Redux + localStorage
+                dispatch(setCredentials({ user: res.user, token: res.token }));
+            
+          
             const profile = await getProfile();
-            localStorage.setItem("user", JSON.stringify(profile.data.user));
-            toast.success("Otp Verification Successfully.")
+            if (profile) {
+                localStorage.setItem("user", JSON.stringify(profile));
+            }
+
+            toast.success("Otp Verification Successful.");
             navigate("/");
         } catch (err: any) {
-            alert(err.response?.data?.error || "Invalid OTP");
+            toast.error(err?.data?.error || "Invalid OTP");
         } finally {
             setLoading(false);
         }
@@ -53,9 +77,7 @@ export default function OtpVerification() {
         <div className="flex justify-center items-center min-h-screen bg-gray-50">
             <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm text-center">
                 <h2 className="text-2xl font-bold mb-2">Verify Phone Number</h2>
-                <p className="text-gray-600 text-sm mb-6">
-                    OTP sent to {phone}
-                </p>
+                <p className="text-gray-600 text-sm mb-6">OTP sent to {phone}</p>
 
                 <div className="flex justify-center gap-2 mb-6">
                     {otpDigits.map((digit, index) => (

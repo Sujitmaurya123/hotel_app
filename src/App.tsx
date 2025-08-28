@@ -20,6 +20,8 @@ import ReservationForm from './pages/booknow/Book';
 import DiningReservation from './pages/booknow/Dininig';
 import EventsReservation from './pages/booknow/EventsReservation';
 import GalleryPage from './pages/footerPage/Gallery';
+import BookingConfirmation from './pages/bookingconfirmation/BookingConfirmation';
+import BookingDetails from './pages/booknow/BookingDetails';
 function App() {
 
   return (
@@ -41,6 +43,10 @@ function App() {
         <Route path="/dining" element={<DiningReservation />} />
         <Route path="/events" element={<EventsReservation />} />
         <Route path="/gallery" element={<GalleryPage />} />
+        <Route path="/booking-confirmation" element={<BookingConfirmation />} />
+        <Route path="/booking-details" element={<BookingDetails />} />
+
+
 
 
 
