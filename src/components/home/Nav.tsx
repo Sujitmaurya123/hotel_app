@@ -75,9 +75,11 @@ export default function Nav() {
 
                         {user ? (
                             <div className="flex items-center space-x-4">
-                                <span className="px-3 py-1 rounded-full bg-gray-200 text-sm">
-                                    {user.name}
-                                </span>
+                                <Link to="/user-profile">
+                                    <span className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-400 text-sm font-medium hover:bg-amber-200">
+                                        {user.name.charAt(0).toUpperCase()}
+                                    </span>
+                              </Link> 
                                 <button
                                     onClick={handleLogout}
                                     className="hover:text-orange-600 text-sm cursor-pointer"
@@ -86,12 +88,13 @@ export default function Nav() {
                                 </button>
                             </div>
                         ) : (
+                            
                             <Link to="/login" className="hover:text-orange-600 text-sm">
                                 LOGIN
                             </Link>
                         )}
 
-                        <button className="bg-gray-500 text-white px-4 py-1 rounded">
+                        <button className="bg-gray-500 text-white px-4 py-1 rounded hover:bg-amber-200">
                             <Link to="/booknow">Book Now</Link>
                         </button>
                     </div>

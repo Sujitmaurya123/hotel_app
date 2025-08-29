@@ -22,6 +22,7 @@ import EventsReservation from './pages/booknow/EventsReservation';
 import GalleryPage from './pages/footerPage/Gallery';
 import BookingConfirmation from './pages/bookingconfirmation/BookingConfirmation';
 import BookingDetails from './pages/booknow/BookingDetails';
+import ProfileSettings from './pages/Profile/ProfileSettings';
 function App() {
 
   return (
@@ -45,6 +46,8 @@ function App() {
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/booking-confirmation" element={<BookingConfirmation />} />
         <Route path="/booking-details" element={<BookingDetails />} />
+        <Route path="/user-profile" element={<ProfileSettings />} />
+
 
 
 
