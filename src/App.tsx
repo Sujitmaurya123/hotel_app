@@ -24,6 +24,8 @@ import BookingConfirmation from './pages/bookingconfirmation/BookingConfirmation
 import BookingDetails from './pages/booknow/BookingDetails';
 import ProfileSettings from './pages/Profile/ProfileSettings';
 import RestaurantMenuBookingPage from './pages/dining/Dining';
+import BanquetBooking from './pages/Events/BanquetBooking';
+import RoomBooking from './pages/rooms/RoomBooking';
 function App() {
 
   return (
@@ -42,10 +44,13 @@ function App() {
         <Route path="/contact-us" element={<ContactSection />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/booknow" element={<ReservationForm />} />
+        <Route path="/room-booking" element={<RoomBooking />} />
+
         <Route path="/dining" element={<DiningReservation />} />
         <Route path="/dining-menu" element={<RestaurantMenuBookingPage />} />
 
         <Route path="/events" element={<EventsReservation />} />
+        <Route path="/events-booking" element={<BanquetBooking />} />
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/booking-confirmation" element={<BookingConfirmation />} />
         <Route path="/booking-details" element={<BookingDetails />} />

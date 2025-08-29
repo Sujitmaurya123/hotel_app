@@ -63,10 +63,10 @@ export default function Nav() {
                         <Link to="/" className="hover:text-orange-600 text-sm">
                             HOME
                         </Link>
-                        <Link to="/booknow" className="hover:text-orange-600 text-sm">
+                        <Link to="/room-booking" className="hover:text-orange-600 text-sm">
                             ROOMS
                         </Link>
-                        <Link to="/events" className="hover:text-orange-600 text-sm">
+                        <Link to="/events-booking" className="hover:text-orange-600 text-sm">
                             EVENT
                         </Link>
                         <Link to="/dining-menu" className="hover:text-orange-600 text-sm">
@@ -118,10 +118,10 @@ export default function Nav() {
                         <Link to="/" className="hover:text-orange-600 text-sm">
                             HOME
                         </Link>
-                        <Link to="/booknow" className="hover:text-orange-600 text-sm">
+                        <Link to="/room-booking" className="hover:text-orange-600 text-sm">
                             ROOMS
                         </Link>
-                        <Link to="/events" className="hover:text-orange-600 text-sm">
+                        <Link to="/events-booking" className="hover:text-orange-600 text-sm">
                             EVENT
                         </Link>
                         <Link to="/dining-menu" className="hover:text-orange-600 text-sm">
