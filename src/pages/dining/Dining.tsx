@@ -112,7 +112,7 @@ const timeslots = [
 function getMockAvailability(dateISO: string, party: number) {
     // simple fake rule: later times fill up for bigger parties
     const dateSeed = new Date(dateISO).getDate();
-    return timeslots.filter((t, idx) => (idx + dateSeed + party) % 3 !== 0);
+    return timeslots.filter((_, idx) => (idx + dateSeed + party) % 3 !== 0);
 }
 
 // --- Component
