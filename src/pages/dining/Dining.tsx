@@ -165,7 +165,7 @@ export default function RestaurantMenuBookingPage() {
     const available = useMemo(() => getMockAvailability(date, partySize), [date, partySize]);
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-neutral-50 to-white">
+        <div className="min-h-screen bg-gradient-to-b from-neutral-50 to-white mt-[90px]">
             {/* Header */}
             <header className="sticky top-0 z-20 backdrop-blur bg-white/70 border-b">
                 <div className="max-w-6xl mx-auto px-4 py-4 flex items-center gap-3">
