@@ -332,7 +332,7 @@ export default function RestaurantMenuBookingPage() {
 
             {/* Booking Dialog */}
             {bookingOpen && (
-                <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
+                <div className="fixed inset-0 z-50 bg-orange-500/40 flex items-center justify-center p-4">
                     <div className="bg-white rounded-2xl max-w-xl w-full max-h-[90vh] overflow-y-auto">
                         <div className="p-6 border-b border-gray-200">
                             <div className="flex items-center justify-between">
