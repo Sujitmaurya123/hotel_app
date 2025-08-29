@@ -69,7 +69,7 @@ export default function Nav() {
                         <Link to="/events" className="hover:text-orange-600 text-sm">
                             EVENT
                         </Link>
-                        <Link to="/dining" className="hover:text-orange-600 text-sm">
+                        <Link to="/dining-menu" className="hover:text-orange-600 text-sm">
                             DINING
                         </Link>
 
@@ -88,7 +88,7 @@ export default function Nav() {
                                 </button>
                             </div>
                         ) : (
-                            
+
                             <Link to="/login" className="hover:text-orange-600 text-sm">
                                 LOGIN
                             </Link>
@@ -124,7 +124,7 @@ export default function Nav() {
                         <Link to="/events" className="hover:text-orange-600 text-sm">
                             EVENT
                         </Link>
-                        <Link to="/dining" className="hover:text-orange-600 text-sm">
+                        <Link to="/dining-menu" className="hover:text-orange-600 text-sm">
                             DINING
                         </Link>
 

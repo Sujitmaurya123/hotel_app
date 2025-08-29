@@ -23,6 +23,7 @@ import GalleryPage from './pages/footerPage/Gallery';
 import BookingConfirmation from './pages/bookingconfirmation/BookingConfirmation';
 import BookingDetails from './pages/booknow/BookingDetails';
 import ProfileSettings from './pages/Profile/ProfileSettings';
+import RestaurantMenuBookingPage from './pages/dining/Dining';
 function App() {
 
   return (
@@ -42,6 +43,8 @@ function App() {
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/booknow" element={<ReservationForm />} />
         <Route path="/dining" element={<DiningReservation />} />
+        <Route path="/dining-menu" element={<RestaurantMenuBookingPage />} />
+
         <Route path="/events" element={<EventsReservation />} />
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/booking-confirmation" element={<BookingConfirmation />} />
