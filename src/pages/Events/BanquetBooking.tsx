@@ -150,7 +150,7 @@ const BanquetBooking: React.FC = () => {
     const getDefaultIcon = () => <FaCheck className="inline mr-1" />;
 
     return (
-        <div className="w-full min-h-screen bg-gray-50">
+        <div className="w-full min-h-screen bg-gray-50 mt-[80px]">
             {/* Hero Section */}
             <div className="relative w-full h-64 md:h-96">
                 <img

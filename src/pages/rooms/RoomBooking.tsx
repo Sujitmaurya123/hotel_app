@@ -96,9 +96,9 @@ const RoomBooking: React.FC = () => {
         : rooms.filter(room => room.name.toLowerCase().includes(activeCategory.toLowerCase()));
 
     return (
-        <div className="min-h-screen bg-gray-50 p-4 md:p-6">
+        <div className="min-h-screen bg-gray-50 p-4 md:p-6 mt-[80px]">
             <div className="max-w-6xl mx-auto">
-                <h1 className="text-3xl font-bold text-gray-800 mb-6">Find Your Perfect Room</h1>
+                <h1 className="text-3xl text-center font-bold text-gray-800 mb-6">Find Your Perfect Room</h1>
 
                 {/* Search Filters */}
                 <div className="bg-white p-4 md:p-6 rounded-lg shadow-md space-y-4 mb-6">
