@@ -48,15 +48,20 @@ export default function Nav() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     {/* Logo */}
-                    <div className="flex items-center space-x-2">
+                    <div className="flex  items-center space-x-1 mt-1">
                         <Link to="/">
                             <img
-                                src="/logo.svg"
+                                src="/logo2.svg"
                                 alt="Hotel Laxmi Vilas Palace"
-                                className="h-10 w-15"
+                                className="h-16 w-22"
                             />
                         </Link>
+                        {/* <div className="text-[10px]">
+                            <p>Hotel</p>
+                            <h6>Laxmi Vilas Palace</h6>
+                        </div> */}
                     </div>
+
 
                     {/* Desktop Menu */}
                     <div className="hidden md:flex space-x-6 items-center">

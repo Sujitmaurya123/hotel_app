@@ -16,7 +16,7 @@ export default function Footer() {
                 <div>
                     <div className="flex items-center gap-2">
                         <img
-                            src="/logo.svg" // Replace with your logo path
+                            src="/logo2.svg" // Replace with your logo path
                             alt="Hotel Logo"
                             className="w-40 h-19"
                         />
